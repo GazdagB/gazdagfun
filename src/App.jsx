@@ -1,17 +1,21 @@
 
 import './App.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Card from './components/Card';
-import GameImg1 from './assets/game-img1.jpg';
+import Home from './pages/Home'
+import NoPage from './pages/NoPage';
+import { BrowserRouter as Router, Route, Routes,} from 'react-router-dom';
 
 function App() {
   
 
   return (
-    <>
-    <h1>Gazdag Fun</h1>
-    <Card img={GameImg1} />
-    </>
+    <Router>
+      <Routes>
+        <Route index path='/' element={<Home/>}></Route>
+        <Route path='*' element={<NoPage/>}></Route>
+      </Routes> 
+    </Router>
+    
   )
 }
 

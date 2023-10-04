@@ -1,0 +1,29 @@
+.game-cards-container {
+    display: grid;
+    margin-top: 10px;
+    font-size: 0;
+    grid-template-columns: repeat(3,1fr);
+    grid-template-rows: auto;
+    grid-gap: 20px 22px;
+    justify-content: center;
+    padding: 0 25px;
+    max-width: 1400px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  /* Style the Card components inside the container */
+
+
+  .home{
+    width: 100vw;
+    height: 100vh;
+  }
+
+  #root{
+    width: 100vw;
+    height: 100vh;
+    max-width: 100vw;
+    padding: 0;
+  }
