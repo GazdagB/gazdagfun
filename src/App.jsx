@@ -1,15 +1,16 @@
 
 import './App.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Card from './components/Card';
+import GameImg1 from './assets/game-img1.jpg';
 
 function App() {
   
 
   return (
     <>
-    <div className="container">
-      <button className="btn btn-primary">Bootstrap Button</button>
-    </div>
+    <h1>Gazdag Fun</h1>
+    <Card img={GameImg1} />
     </>
   )
 }
