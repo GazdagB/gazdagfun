@@ -11,10 +11,20 @@
     width: 100%;
     margin-left: auto;
     margin-right: auto;
+    
   }
   
   /* Style the Card components inside the container */
 
+  .game-link{
+    border: 5px solid #000;
+    border-radius: 21px;
+  }
+
+  .game-link:hover{
+    transform: scale(0.98);
+    transition: 0.2s ease-in;
+  }
 
   .home{
     width: 100vw;
