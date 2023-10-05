@@ -1,5 +1,5 @@
 import Card from '../components/Card';
-import GameImg0 from '../assets/game-img0.jpg'; // Import your images
+import TicTacToe from '../assets/tictactoe.jpg'; // Import your images
 import GameImg1 from '../assets/game-img1.jpg';
 import GameImg2 from '../assets/game-img2.jpg';
 import { Link } from 'react-router-dom';
@@ -9,8 +9,8 @@ function Home() {
  
   const games = [
     {
-      img: GameImg0,
-      route: '/gameimg0',
+      img: TicTacToe,
+      route: '/TicTacToe',
     },
     {
       img: GameImg1,
