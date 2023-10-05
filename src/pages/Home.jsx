@@ -25,10 +25,7 @@ function Home() {
 
   return (
     <div className='home'>
-      <h1>Gazdag Fun</h1>
-      
-
-      
+      <h1 className='my-5'>Gazdag Fun</h1>
       <div className="game-cards-container">
     {games.map((game, index) => (
     <Link to={game.route} key={index} className="game-link">
