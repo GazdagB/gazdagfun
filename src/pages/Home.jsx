@@ -7,7 +7,7 @@ import "./Home.css"
 
 function Home() {
  
-  const games = [
+  const projects = [
     {
       img: TicTacToe,
       route: '/TicTacToe',
@@ -25,15 +25,15 @@ function Home() {
 
   return (
     <div className='home'>
-      <h1 className='my-5'>Gazdag Fun</h1>
+      <h1 className='mt-5 welcome-logo'>Gazdag Fun</h1>
+      <p className='header-message mb-5'>Where a beginner developer&rsquo;s project&apos;s live!</p>
       <div className="game-cards-container">
-    {games.map((game, index) => (
-    <Link to={game.route} key={index} className="game-link">
-      <Card img={game.img} />
-    </Link>
-  ))}
-</div>
-    
+        {projects.map((project, index) => (
+          <Link to={project.route} key={index} className="project-link">
+            <Card img={project.img} />
+          </Link>
+        ))}
+      </div>
     </div>
   );
 }

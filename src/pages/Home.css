@@ -16,12 +16,12 @@
   
   /* Style the Card components inside the container */
 
-  .game-link{
+  .project-link{
     border: 5px solid #000;
     border-radius: 21px;
   }
 
-  .game-link:hover{
+  .project-link:hover{
     transform: scale(0.98);
     transition: 0.2s ease-in;
   }
@@ -36,4 +36,18 @@
     height: 100vh;
     max-width: 100vw;
     padding: 0;
+  }
+
+  .header-message{
+    font-size: 1.5rem;
+    font-weight: 300;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
+  .welcome-logo{
+    font-size: 3rem;
+    font-weight: 600;
+    margin-top: 20px;
+    margin-bottom: 20px;
   }

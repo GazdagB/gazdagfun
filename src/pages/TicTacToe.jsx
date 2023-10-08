@@ -1,3 +1,7 @@
+import Container from "react-bootstrap/Container";
+import Navbar from "react-bootstrap/Navbar";
+import Home from "./Home";
+
 //Components
 import Cell from "../components/Cell";
 // CSS
@@ -9,6 +13,7 @@ import { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRotateRight } from "@fortawesome/free-solid-svg-icons";
 import { faTrophy } from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router-dom";
 
 const TicTacToe = () => {
   //STATES
@@ -150,90 +155,106 @@ const TicTacToe = () => {
   };
 
   return (
-    <div className="tic-tac-toe">
-      {celebrate && (
-        <img
-          className="confetti"
-          style={{
-            width: "100vw",
-            height: "90vh",
-            mixBlendMode: "multiply",
-            position: "absolute",
-            pointerEvents: "none",
-          }}
-          src="https://i.pinimg.com/originals/e9/93/d1/e993d191d03335fd09a1987db3f8d39a.gif"
-          alt=""
-        />
-      )}
+    <>
 
-      <div>
-        <div className="reset-container">
-          <div
-            onClick={handleReset}
-            className="d-flex justify-content-center align-items-center gap-2"
-          >
-            <p className="h5">Reset</p>
-            <FontAwesomeIcon icon={faRotateRight} />
-          </div>
-        </div>
-        <div className="gameboard">
-          {cells.map((cell, index) => (
-            <Cell
-              key={index}
-              id={index}
-              cell={cell}
-              setCells={setCells}
-              go={go}
-              setGo={setGo}
-              cells={cells}
-              winningMessage={winningMessage}
-            />
-          ))}
-        </div>
-        <p className="display-4">{winningMessage || message}</p>
-        <div className="scoreboard"></div>
-      </div>
+    {/* N */}
+      <Navbar className="">
+        <Container className="container-xxl">
+          <Link style={{ textDecoration: "none" }} to={"../"}>
+            <Navbar.Brand className="navbar-logo" href="">
+              Gazdag Fun
+            </Navbar.Brand>
+          </Link>
+        </Container>
+      </Navbar>
 
-      <div className="highscore-container">
-        <h2>
-          {" "}
-          <FontAwesomeIcon icon={faTrophy} /> Higscore Wins
-        </h2>
-        <hr style={{ width: "400px" }} />
-        <p className="h5 d-flex align-items-center justify-content-center gap-3 display-5">
-          <div className="circle-sm"></div>Circle Wins: {scores.circle}
-        </p>
-        <p className="h5 d-flex align-items-center justify-content-center gap-4 display-5">
-          <div className="cross-sm"></div>Cross Wins: {scores.cross}
-        </p>
-        <button
-          onClick={() => setIsModalOpen(true)}
-          className="btn btn-primary mt-3"
-        >
-          Reset Wins
-        </button>
-      </div>
 
-      {/* MODAL */}
-      {isModalOpen && (
-        <div className="modal-overlay">
-          <div className="custom-modal">
-            <h3>Are you sure you want to reset scores?</h3>
-            <div className="modal-buttons">
-              <button className="btn btn-danger" onClick={resetWins}>
-                Reset
-              </button>
-              <button
-                className="btn btn-secondary"
-                onClick={() => setIsModalOpen(false)}
-              >
-                Cancel
-              </button>
+      <div className="tic-tac-toe">
+        <div className="navbar "></div>
+        {celebrate && (
+          <img
+            className="confetti"
+            style={{
+              width: "100vw",
+              height: "90vh",
+              mixBlendMode: "multiply",
+              position: "absolute",
+              pointerEvents: "none",
+            }}
+            src="https://i.pinimg.com/originals/e9/93/d1/e993d191d03335fd09a1987db3f8d39a.gif"
+            alt=""
+          />
+        )}
+
+        <div className="d-flex flex-column justify-content-center align-items-center">
+          <div className="reset-container">
+            <div
+              onClick={handleReset}
+              className="d-flex justify-content-center align-items-center gap-2"
+            >
+              <p className="h5">Reset</p>
+              <FontAwesomeIcon icon={faRotateRight} />
             </div>
           </div>
+          <div className="gameboard">
+            {cells.map((cell, index) => (
+              <Cell
+                key={index}
+                id={index}
+                cell={cell}
+                setCells={setCells}
+                go={go}
+                setGo={setGo}
+                cells={cells}
+                winningMessage={winningMessage}
+              />
+            ))}
+          </div>
+          <p className="display-4">{winningMessage || message}</p>
+          <div className="scoreboard"></div>
         </div>
-      )}
-    </div>
+
+        <div className="highscore-container">
+          <h2>
+            {" "}
+            <FontAwesomeIcon icon={faTrophy} /> Higscore Wins
+          </h2>
+          <hr style={{ width: "400px" }} />
+          <p className="h5 d-flex align-items-center justify-content-center gap-3 display-5">
+            <div className="circle-sm"></div>Circle Wins: {scores.circle}
+          </p>
+          <p className="h5 d-flex align-items-center justify-content-center gap-4 display-5">
+            <div className="cross-sm"></div>Cross Wins: {scores.cross}
+          </p>
+          <button
+            onClick={() => setIsModalOpen(true)}
+            className="btn btn-primary mt-3"
+          >
+            Reset Wins
+          </button>
+        </div>
+
+        {/* MODAL */}
+        {isModalOpen && (
+          <div className="modal-overlay">
+            <div className="custom-modal">
+              <h3>Are you sure you want to reset scores?</h3>
+              <div className="modal-buttons">
+                <button className="btn btn-danger" onClick={resetWins}>
+                  Reset
+                </button>
+                <button
+                  className="btn btn-secondary"
+                  onClick={() => setIsModalOpen(false)}
+                >
+                  Cancel
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
+    </>
   );
 };
 
