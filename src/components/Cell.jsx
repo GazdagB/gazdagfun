@@ -4,21 +4,23 @@ const Cell = ({ cells, id, cell, setCells, go, setGo, winningMessage }) => {
   console.log(cell);
 
   const handleClick = (e) => {
-    const taken =
-      e.target.firstChild.classList.contains("circle") ||
-      e.target.firstChild.classList.contains("cross");
-
-    if (!taken) {
-      if (go === "circle") {
-        e.target.firstChild.classList.add("circle");
-        setGo("cross");
-        handleCellChange("circle");
-      }
-
-      if (go === "cross") {
-        e.target.firstChild.classList.add("cross");
-        setGo("circle");
-        handleCellChange("cross");
+    if (!winningMessage || !winningMessage === null) {
+      const taken =
+        e.target.firstChild.classList.contains("circle") ||
+        e.target.firstChild.classList.contains("cross");
+  
+      if (!taken) {
+        if (go === "circle") {
+          e.target.firstChild.classList.add("circle");
+          setGo("cross");
+          handleCellChange("circle");
+        }
+  
+        if (go === "cross") {
+          e.target.firstChild.classList.add("cross");
+          setGo("circle");
+          handleCellChange("cross");
+        }
       }
     }
   };
@@ -48,7 +50,7 @@ Cell.propTypes = {
   go: PropTypes.string.isRequired,
   setGo: PropTypes.func.isRequired,
   cells: PropTypes.array.isRequired,
-  winningMessage: PropTypes.string.isRequired,
+  winningMessage: PropTypes.any.isRequired,
 };
 
 export default Cell;
