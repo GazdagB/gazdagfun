@@ -2,13 +2,15 @@ import Cell from "../components/Cell";
 import "./TicTacToe.css";
 
 import { useState, useEffect } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faRotateRight } from "@fortawesome/free-solid-svg-icons";
 
 const TicTacToe = () => {
   const [cells, setCells] = useState(["", "", "", "", "", "", "", "", ""]);
   const [go, setGo] = useState("circle");
   const [winningMessage, setWinningMessage] = useState(null);
 
-  const message = "it is now " + go + "'s turn";
+  const message = <p>It&apos;s now <span className={go + "-color"}>{go}</span>&apos;s turn</p>;
 
   useEffect(() => {
     const checkScore = () => {
@@ -35,13 +37,45 @@ const TicTacToe = () => {
           return;
         }
       })
+
+      if(cells.every(cell => cell !== "")){
+        setWinningMessage("It's a Draw!")
+      }
     };
 
     checkScore();
   }, [cells]);
 
+  const handleReset = () => {
+    // Clear all cells
+    const emptyCells = ["", "", "", "", "", "", "", "", ""];
+    setCells(emptyCells);
+  
+    // Clear winning message
+    setWinningMessage(null);
+  
+    // Clear CSS classes from the cells
+    const cellElements = document.querySelectorAll('.square');
+    cellElements.forEach(cellElement => {
+      cellElement.firstChild.classList.remove('circle', 'cross');
+    });
+  
+    // Reset the turn to 'circle'
+    setGo("circle");
+  };
+
+
   return (
     <div className="tic-tac-toe">
+
+      <div className="reset-container">
+      <div onClick={handleReset} className="d-flex justify-content-center align-items-center gap-2">
+        <p className="h5">Reset</p>
+        <FontAwesomeIcon icon={faRotateRight} />
+      </div>
+      </div>
+
+
       <div className="gameboard">
         {cells.map((cell, index) => (
           <Cell
@@ -56,7 +90,7 @@ const TicTacToe = () => {
           />
         ))}
       </div>
-      <p>{winningMessage || message}</p>
+      <p className="display-4">{winningMessage || message}</p>
     </div>
   );
 };
