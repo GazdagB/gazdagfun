@@ -1,6 +1,6 @@
 import Container from "react-bootstrap/Container";
 import Navbar from "react-bootstrap/Navbar";
-import Home from "./Home";
+
 
 //Components
 import Cell from "../components/Cell";

@@ -5,7 +5,7 @@ const Card = ({ img }) => {
   return (
     <>
         
-        <img src={img} alt="..." style={{height: "250px",width: "500px"}}  className="card-img-top card-img-bottom rounded-4"/>
+        <img src={img} alt="..." style={{height: "",maxWidth: "100%"}}  className="card-img-top card-img-bottom rounded-4"/>
       
          
         
