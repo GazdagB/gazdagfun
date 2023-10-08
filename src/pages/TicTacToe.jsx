@@ -186,7 +186,7 @@ const TicTacToe = () => {
           />
         )}
 
-        <div className="d-flex flex-column justify-content-center align-items-center">
+        <div className="content-container d-flex flex-column justify-content-center align-items-center">
           <div className="reset-container">
             <div
               onClick={handleReset}

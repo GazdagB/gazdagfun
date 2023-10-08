@@ -1,6 +1,6 @@
 .tic-tac-toe {
     margin: 0 15%;
-    padding: 0;
+    padding: 100px 0;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -9,6 +9,9 @@
     ;
   }
   
+
+  
+
   .gameboard {
     width: 600px;
     height: 600px;
@@ -235,6 +238,29 @@
     gap: 150px;
   }
 
+
+  .circle{
+    width: 120px;
+    height: 120px;
+    border: solid 20px blue;
+  }
+
+  .cross{
+    width: 120px;
+    height: 120px;
+  }
+
+  .cross:after{
+   height:25%;
+   margin-top: -12%;
+  }
+
+  .cross:before{
+    width: 25%;
+    margin-left: -12%;
+  }
+
+
   .gameboard{
     width: 400px;
     height: 400px;
@@ -254,6 +280,14 @@
   .tic-tac-toe{
     gap: 50px;
   }
+
+  .circle{
+    width: 120px;
+    height: 120px;
+    border: solid 20px blue;
+  }
+
+  .cross
 
   .gameboard{
     width: 300px;
@@ -280,13 +314,49 @@
     margin: 20px 50px 0 50px;
   }
 }
+
 @media (max-height: 850px){
   .tic-tac-toe{
     height: 100vh;
-
   }
+
+ 
+  .gameboard{
+    margin-left: 10px;
+  }
+}
+
+@media (max-height: 900px){
+  .tic-tac-toe{
+    height: 100vh;
+  }
+
+  .content-container{
+    margin-top: 50px;
+}
 
   .gameboard{
     margin-left: 10px;
+    width: 300px;
+    height: 300px;
+  }
+
+  .reset-container{
+    max-width: 300px;
+  }
+
+  .highscore-container{
+    margin-bottom: 150px;
+  }
+
+  .circle{
+    width: 90px;
+    height: 90px;
+    border: solid 20px blue;
+  }
+
+  .cross{
+    width: 90px;
+    height: 90px;
   }
 }
