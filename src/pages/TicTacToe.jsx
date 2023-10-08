@@ -1,11 +1,17 @@
+//Components
 import Cell from "../components/Cell";
+// CSS
 import "./TicTacToe.css";
 
 import { useState, useEffect } from "react";
+
+//Icon Imports
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRotateRight } from "@fortawesome/free-solid-svg-icons";
+import { faTrophy } from "@fortawesome/free-solid-svg-icons";
 
 const TicTacToe = () => {
+  //STATES
   const [cells, setCells] = useState(["", "", "", "", "", "", "", "", ""]);
   const [go, setGo] = useState("circle");
   const [winningMessage, setWinningMessage] = useState("");
@@ -14,7 +20,6 @@ const TicTacToe = () => {
     const savedScores = JSON.parse(localStorage.getItem("scores"));
     return savedScores || { circle: 0, cross: 0 };
   });
-
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const message = (
@@ -48,17 +53,24 @@ const TicTacToe = () => {
       });
 
       if (circleWins) {
-        setWinningMessage(<p>🎖️<span className="circle-color">Circle</span> Wins!</p>);
+        setWinningMessage(
+          <p>
+            🎖️<span className="circle-color">Circle</span> Wins!
+          </p>
+        );
         updateScores("circle");
       } else if (crossWins) {
-        setWinningMessage(<p>🎖️<span className="cross-color">Cross</span> Wins!</p>);
+        setWinningMessage(
+          <p>
+            🎖️<span className="cross-color">Cross</span> Wins!
+          </p>
+        );
         updateScores("cross");
       } else if (cells.every((cell) => cell !== "")) {
         setWinningMessage("It's a Draw!");
       }
     };
 
-    
     checkScore();
   }, [cells]);
 
@@ -108,7 +120,20 @@ const TicTacToe = () => {
     const handleCelebrate = () => {
       if (winningMessage === "") {
         setCelebrate(false);
-      } else if (winningMessage === <p>🎖️<span className="circle-color">Circle</span> Wins!</p> || winningMessage === <p>🎖️<span className="cross-color">Cross</span> Wins!</p>) {
+      } else if (
+        winningMessage ===
+        (
+          <p>
+            🎖️<span className="circle-color">Circle</span> Wins!
+          </p>
+        ) ||
+        winningMessage ===
+        (
+          <p>
+            🎖️<span className="cross-color">Cross</span> Wins!
+          </p>
+        )
+      ) {
         setCelebrate(true);
         setTimeout(() => {
           setCelebrate(false);
@@ -140,45 +165,51 @@ const TicTacToe = () => {
           alt=""
         />
       )}
-      
+
       <div>
-
-      
-      <div className="reset-container">
-        <div
-          onClick={handleReset}
-          className="d-flex justify-content-center align-items-center gap-2"
-        >
-          <p className="h5">Reset</p>
-          <FontAwesomeIcon icon={faRotateRight} />
+        <div className="reset-container">
+          <div
+            onClick={handleReset}
+            className="d-flex justify-content-center align-items-center gap-2"
+          >
+            <p className="h5">Reset</p>
+            <FontAwesomeIcon icon={faRotateRight} />
+          </div>
         </div>
-      </div>
-      <div className="gameboard">
-        {cells.map((cell, index) => (
-          <Cell
-            key={index}
-            id={index}
-            cell={cell}
-            setCells={setCells}
-            go={go}
-            setGo={setGo}
-            cells={cells}
-            winningMessage={winningMessage}
-          />
-        ))}
-      </div>
-      <p className="display-4">{winningMessage || message}</p>
-      <div className="scoreboard">
-      </div>
-
+        <div className="gameboard">
+          {cells.map((cell, index) => (
+            <Cell
+              key={index}
+              id={index}
+              cell={cell}
+              setCells={setCells}
+              go={go}
+              setGo={setGo}
+              cells={cells}
+              winningMessage={winningMessage}
+            />
+          ))}
+        </div>
+        <p className="display-4">{winningMessage || message}</p>
+        <div className="scoreboard"></div>
       </div>
 
       <div className="highscore-container">
-        <h2>Higscore Wins</h2>
-        <hr style={{width: "400px"}} />
-      <p className="h5 d-flex align-items-center justify-content-center gap-3 display-5"><div className="circle-sm"></div>Circle Wins: {scores.circle}</p>
-        <p className="h5 d-flex align-items-center justify-content-center gap-3 display-5"><div className="cross-sm"></div>Cross Wins: {scores.cross}</p>
-        <button onClick={() => setIsModalOpen(true)} className="btn btn-primary mt-3">
+        <h2>
+          {" "}
+          <FontAwesomeIcon icon={faTrophy} /> Higscore Wins
+        </h2>
+        <hr style={{ width: "400px" }} />
+        <p className="h5 d-flex align-items-center justify-content-center gap-3 display-5">
+          <div className="circle-sm"></div>Circle Wins: {scores.circle}
+        </p>
+        <p className="h5 d-flex align-items-center justify-content-center gap-4 display-5">
+          <div className="cross-sm"></div>Cross Wins: {scores.cross}
+        </p>
+        <button
+          onClick={() => setIsModalOpen(true)}
+          className="btn btn-primary mt-3"
+        >
           Reset Wins
         </button>
       </div>
@@ -192,23 +223,18 @@ const TicTacToe = () => {
               <button className="btn btn-danger" onClick={resetWins}>
                 Reset
               </button>
-              <button className="btn btn-secondary" onClick={() => setIsModalOpen(false)}>
+              <button
+                className="btn btn-secondary"
+                onClick={() => setIsModalOpen(false)}
+              >
                 Cancel
               </button>
             </div>
           </div>
         </div>
       )}
-  
-
-
-
-
-    
     </div>
-    
   );
-  
 };
 
 export default TicTacToe;
