@@ -15,6 +15,8 @@ const TicTacToe = () => {
     return savedScores || { circle: 0, cross: 0 };
   });
 
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   const message = (
     <p>
       It&apos;s now <span className={go + "-color"}>{go}</span>&apos;s turn
@@ -116,6 +118,12 @@ const TicTacToe = () => {
     handleCelebrate();
   }, [winningMessage]);
 
+  const resetWins = () => {
+    localStorage.removeItem("scores");
+    setScores({ circle: 0, cross: 0 });
+    setIsModalOpen(false); // Close the modal after resetting wins
+  };
+
   return (
     <div className="tic-tac-toe">
       {celebrate && (
@@ -132,6 +140,10 @@ const TicTacToe = () => {
           alt=""
         />
       )}
+      
+      <div>
+
+      
       <div className="reset-container">
         <div
           onClick={handleReset}
@@ -141,7 +153,6 @@ const TicTacToe = () => {
           <FontAwesomeIcon icon={faRotateRight} />
         </div>
       </div>
-
       <div className="gameboard">
         {cells.map((cell, index) => (
           <Cell
@@ -158,11 +169,46 @@ const TicTacToe = () => {
       </div>
       <p className="display-4">{winningMessage || message}</p>
       <div className="scoreboard">
-        <p className="h5">Circle: {scores.circle}</p>
-        <p className="h5">Cross: {scores.cross}</p>
       </div>
+
+      </div>
+
+      <div className="highscore-container">
+        <h2>Higscore Wins</h2>
+        <hr style={{width: "400px"}} />
+      <p className="h5 d-flex align-items-center justify-content-center gap-3 display-5"><div className="circle-sm"></div>Circle Wins: {scores.circle}</p>
+        <p className="h5 d-flex align-items-center justify-content-center gap-3 display-5"><div className="cross-sm"></div>Cross Wins: {scores.cross}</p>
+        <button onClick={() => setIsModalOpen(true)} className="btn btn-primary mt-3">
+          Reset Wins
+        </button>
+      </div>
+
+      {/* MODAL */}
+      {isModalOpen && (
+        <div className="modal-overlay">
+          <div className="custom-modal">
+            <h3>Are you sure you want to reset scores?</h3>
+            <div className="modal-buttons">
+              <button className="btn btn-danger" onClick={resetWins}>
+                Reset
+              </button>
+              <button className="btn btn-secondary" onClick={() => setIsModalOpen(false)}>
+                Cancel
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+  
+
+
+
+
+    
     </div>
+    
   );
+  
 };
 
 export default TicTacToe;
