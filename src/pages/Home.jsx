@@ -14,7 +14,7 @@ function Home() {
     },
     {
       img: GameImg1,
-      route: '/gameimg1',
+      route: '/ToDoList',
     },
     {
       img: GameImg2,

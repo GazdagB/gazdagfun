@@ -1,4 +1,3 @@
-
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faBars,
@@ -11,10 +10,11 @@ import {
   faSliders,
   faRightFromBracket,
 } from "@fortawesome/free-solid-svg-icons";
+import "./Menu.css";
 
 const Menu = () => {
   return (
-    <div className="menu-comp">
+    <div className="menu-comp ">
       <div className="menu-bar">
         <h5>MENU</h5>
         <FontAwesomeIcon icon={faBars} />
@@ -27,25 +27,35 @@ const Menu = () => {
         </div>
       </div>
 
-      <h5>TASKS</h5>
-      <ul className="menu-tasks">
-        <li>
-          <FontAwesomeIcon icon={faAnglesRight} /> Upcoming{" "}
-          <div className="count-square">12</div>
-        </li>
-        <li>
-          <FontAwesomeIcon icon={faListCheck} /> Today{" "}
-          <div className="count-square">5</div>
-        </li>
-        <li>
-          <FontAwesomeIcon icon={faCalendarDays} /> Calendar{" "}
-          <div className="count-square"></div>
-        </li>
-        <li>
-          <FontAwesomeIcon icon={faNoteSticky} /> Sticky Wall{" "}
-          <div className="count-square"></div>
-        </li>
-      </ul>
+      <div className="tasks-container">
+        <h5>TASKS</h5>
+        <ul className="menu-tasks">
+          <li>
+            <div className="tasks-button">
+                <FontAwesomeIcon icon={faAnglesRight} /> Upcoming{" "}
+            </div>
+            <div className="count-square">12</div>
+          </li>
+          <li className="active">
+            <div className="tasks-button">
+                <FontAwesomeIcon icon={faListCheck} /> Today{" "}
+            </div>
+            <div className="count-square-active">5</div>
+          </li>
+          <li>
+            <div className="tasks-button">
+                <FontAwesomeIcon icon={faCalendarDays} /> Calendar{" "}
+            </div>
+            <div className="count-square"></div>
+          </li>
+          <li>
+            <div className="tasks-button">
+                <FontAwesomeIcon icon={faNoteSticky} /> Sticky Wall{" "}
+            </div>
+            <div className="count-square"></div>
+          </li>
+        </ul>
+      </div>
 
       <h5>LISTS</h5>
       <ul className="menu-lists">
