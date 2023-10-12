@@ -57,22 +57,31 @@ const Menu = () => {
         </ul>
       </div>
 
+    <div className="lists-container">
       <h5>LISTS</h5>
       <ul className="menu-lists">
         <li>
-          <div className="list-square"></div>Personal{" "}
+          <div className="list-button">
+              <div className="list-square red"></div>Personal{" "}
+          </div>
           <div className="count-square">3</div>
         </li>
         <li>
-          <div className="list-square"></div>Work{" "}
+          <div className="list-button">
+              <div className="list-square blue"></div> Work{" "}
+          </div>
           <div className="count-square">6</div>
         </li>
         <li>
-          <div className="list-square"></div>Personal{" "}
+          <div className="list-button">
+              <div className="list-square yellow"></div>Personal{" "}
+          </div>
           <div className="count-square">3</div>
         </li>
         <li>
-          <FontAwesomeIcon icon={faPlus} /> Add New List
+          <div className="list-button">
+              <FontAwesomeIcon icon={faPlus} /> Add New List
+          </div>
         </li>
       </ul>
 
@@ -84,6 +93,7 @@ const Menu = () => {
           <FontAwesomeIcon icon={faPlus} />
           Add tags
         </div>
+      </div>
       </div>
 
       <div className="settings-container">
